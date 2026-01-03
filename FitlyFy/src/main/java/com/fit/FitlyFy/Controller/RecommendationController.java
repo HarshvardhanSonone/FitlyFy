@@ -5,6 +5,7 @@ import com.fit.FitlyFy.Service.RecommendationService;
 import com.fit.FitlyFy.model.Recommendations;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ public class RecommendationController {
     private final RecommendationService recommendationService;
     @PostMapping("/generate")
     public ResponseEntity<Recommendations> generateRecommendation(
-            @RequestBody RecommendationsRequest request
+           @Validated @RequestBody RecommendationsRequest request
     ){
 
         Recommendations recommendations= recommendationService.genrateRecommendation(request);

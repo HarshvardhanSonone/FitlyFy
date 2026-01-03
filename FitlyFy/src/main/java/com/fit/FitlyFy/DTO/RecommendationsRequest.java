@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
@@ -15,7 +16,8 @@ import java.util.List;
 
 public class RecommendationsRequest {
 
-    private String userId;
+    @NotNull
+    private String userid;
     private String activityId;
 
     private List<String> improvements;

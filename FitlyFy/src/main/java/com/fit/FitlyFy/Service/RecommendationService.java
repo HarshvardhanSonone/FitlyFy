@@ -22,9 +22,17 @@ private final ActivityRepo activityRepo;
 private final  RecommendationRepo recommendationRepo;
     public Recommendations genrateRecommendation(RecommendationsRequest recommendationsRequest) {
 
-        User user= userRepo.findById(recommendationsRequest.getUserId())
-        .orElseThrow(()->new RuntimeException("User not found"+recommendationsRequest.getUserId()));
+        User user= userRepo.findById(recommendationsRequest.getUserid())
+        .orElseThrow(()->new RuntimeException("User not found"+recommendationsRequest.getUserid()));
 
+        System.out.println("USER ID = " + recommendationsRequest.getUserid());
+
+
+        if (recommendationsRequest.getUserid() == null) {
+            throw new IllegalArgumentException("userId must not be null");
+        }
+        User user1 = userRepo.findById(recommendationsRequest.getUserid())
+                .orElseThrow(() -> new RuntimeException("User not found"));
         Activities activities= activityRepo.findById(recommendationsRequest.getActivityId())
                 .orElseThrow(()->new RuntimeException("User not found"+recommendationsRequest.getActivityId()));
 
