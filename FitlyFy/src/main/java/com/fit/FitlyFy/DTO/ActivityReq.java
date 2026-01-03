@@ -17,8 +17,8 @@ public class ActivityReq {
 
 
 
-        @JsonProperty ("userId")
-        private String userID;
+        @JsonProperty ("userid")
+        private String userid;
         private Integer duration;
         private Integer CaloriesBurned;
 

@@ -28,7 +28,8 @@ public class User {
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JsonIgnore
 
-    @Column(nullable = false, unique = true)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true )
     private String email;
 
     private String password;

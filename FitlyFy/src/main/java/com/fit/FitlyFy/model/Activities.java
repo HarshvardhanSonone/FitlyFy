@@ -2,8 +2,7 @@ package com.fit.FitlyFy.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -16,7 +15,11 @@ import java.util.Map;
 
 @Data
 @Entity
+@AllArgsConstructor
+// @NoArgsConstructor
 @Builder
+
+@ToString(exclude = "user")
 public class Activities {
 
 @Id
@@ -25,7 +28,7 @@ public class Activities {
     private String id;
 
 @ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "user_id", nullable = false, foreignKey = @ForeignKey(name = "fk_activity_user")) // FK
+@JoinColumn(name = "userid", nullable = false, foreignKey = @ForeignKey(name = "fk_activity_user")) // FK
 @JsonIgnore
 private User user;
 private Integer duration;

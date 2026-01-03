@@ -6,6 +6,7 @@ import com.fit.FitlyFy.Service.ActivityService;
 import com.fit.FitlyFy.model.Activities;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.Nullable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +19,14 @@ public class ActivityController {
 
 @GetMapping("/api/activities")
     public ResponseEntity <List<ActivityResponse>> getActivities(
-            @RequestHeader(name = "userId",required = true)
+            @RequestHeader(name = "userid",required = true)
             String userid){
 
     System.out.println("HIT GET /api/activities with userId = " + userid);
    // System.out.println(activityService.getUserActivites(userid));
-    return ResponseEntity.ok(activityService.getUserActivites(userid));
+
+     List<ActivityResponse> activities = activityService.getUserActivites(userid);
+    return ResponseEntity.ok(activities);
 }
 
     private final ActivityService activityService;

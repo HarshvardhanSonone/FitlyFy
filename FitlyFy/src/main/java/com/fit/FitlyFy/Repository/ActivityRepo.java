@@ -8,6 +8,6 @@ import java.util.List;
 public interface ActivityRepo extends JpaRepository<Activities,String> {
 
 
-    List<Activities> findByUser_Id(String userId);
+    List<Activities> findByUser_Id(String userid);
 
 }

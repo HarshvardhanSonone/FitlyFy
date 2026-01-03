@@ -12,6 +12,7 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -23,7 +24,7 @@ public class ActivityService {
     private final ActivityRepo activityRepo;
 private final UserRepo userRepo;
     public ActivityResponse trackActivity(ActivityReq req) {
-        User user= userRepo.findById(req.getUserID())
+        User user= userRepo.findById(req.getUserid())
                 .orElseThrow(()->new RuntimeException("Invalid Credentials"));
 
         Activities activity = Activities.builder()
@@ -48,7 +49,7 @@ private final UserRepo userRepo;
         ActivityResponse activityResponse= new ActivityResponse();
 
         activityResponse.setId(savedactivities.getId());
-        activityResponse.setUserID(savedactivities.getUser().getId());
+        activityResponse.setUserid(savedactivities.getUser().getId());
         activityResponse.setActivityType(savedactivities.getActivityType());
         activityResponse.setDuration(savedactivities.getDuration());
         activityResponse.setCaloriesBurned(savedactivities.getCaloriesBurned());
@@ -60,10 +61,10 @@ private final UserRepo userRepo;
         return activityResponse;
     }
 
-    public @Nullable List<ActivityResponse> getUserActivites(String userId) {
+    public  List<ActivityResponse> getUserActivites(String userId) {
 
 
-List<Activities>activitiesList=activityRepo.findByUser_Id(userId);
+Optional<Activities> activitiesList=activityRepo.findById(userId);
         return activitiesList.stream().map(this::convertToRes)
                 .toList();
     }

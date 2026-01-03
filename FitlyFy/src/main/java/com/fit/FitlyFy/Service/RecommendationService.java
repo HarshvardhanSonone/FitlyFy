@@ -31,7 +31,7 @@ private final  RecommendationRepo recommendationRepo;
        Recommendations recommendations= Recommendations.builder()
                .user(user)
                        .activity(activities)
-                               .improvements(recommendationsRequest.getImprovements())
+                                .improvements(recommendationsRequest.getImprovements())
                                        .suggestion(recommendationsRequest.getSuggestion())
                                                .safety(recommendationsRequest.getSafety())
                                                 .build();

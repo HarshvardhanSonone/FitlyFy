@@ -15,7 +15,7 @@ import java.util.Map;
 public class ActivityResponse {
     private String id;
 
-        private String userID;
+        private String userid;
         private Integer duration;
         private Integer CaloriesBurned;
 

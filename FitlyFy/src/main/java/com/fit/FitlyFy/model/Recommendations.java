@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fit.FitlyFy.model.Activities;
 import com.fit.FitlyFy.model.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 @Builder
 @Data
+@AllArgsConstructor
 @Entity
 public class Recommendations {
 
